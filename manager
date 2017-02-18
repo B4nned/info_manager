@@ -1,8 +1,8 @@
 #!/bin/bash
 #author: Leo / b4nned
-#date: 15/02/17 {dd/mm/yy}
+#date: 17/02/17 {dd/mm/yy}
 #version 1.0
-#See the file 'doc/license', or visit www.gnu.org/licenses/gpl.txt
+#See the file 'LICENSE', or visit www.gnu.org/licenses/gpl.txt
 
 Change_Color () {
 	color="\e[0m"
