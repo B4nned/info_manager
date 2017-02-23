@@ -56,7 +56,7 @@ Show_info () {
 
 	cores=$(sensors | grep Core | cut -b 6)
 	temps=$(sensors | grep Core | cut -b 18-19)
-	htemps=$(sensors | grep Core | cut -b 36-37)
+	htemps=$(sensors | grep Core | cut -b 35-36)
 	etemps=$(sensors | grep Core | cut -b 53-55)
 
 	for i in $cores; do 
