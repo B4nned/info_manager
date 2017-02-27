@@ -1,12 +1,12 @@
 #CHANGE LOG
 
-## Version 1.1 {17/02/17} (dd/mm/yy)
+### Version 1.1 {17/02/17} (dd/mm/yy)
 Date: 17/02/17
 Show:
   -Processors GHz
   -CPU Name
   
-## Version 1.0 {17/02/17} (dd/mm/yy)
+### Version 1.0 {17/02/17} (dd/mm/yy)
 Date: 17/02/17
 Show:
   -Cores Temp
