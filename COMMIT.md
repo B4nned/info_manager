@@ -1,11 +1,9 @@
-#CHANGE LOG
+#CHANGE LOG (dd/mm/yy)
 
-#### Version 1.1 {17/02/17} (dd/mm/yy)
-Date: 17/02/17
-  - Processors GHz
-  - CPU Name
+#### Version 1.1 {26/02/17}
+- Processors GHz
+- CPU Name
   
-#### Version 1.0 {17/02/17} (dd/mm/yy)
-Date: 17/02/17
-  - Cores Temp
-  - Change colors by high cores temperature, {cyan(cold) & red(hot)}
+#### Version 1.0 {17/02/17}
+- Cores Temp
+- Change colors by high cores temperature, {cyan(cold) & red(hot)}
