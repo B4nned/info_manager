@@ -6,4 +6,4 @@
   
 #### Version 1.0 {17/02}
 - Cores Temp
-- Change colors by high cores temperature, {cyan(cold) & red(hot)}
+- Change colors by high cores temperature, _cyan(*cold*)_ & _red(*hot*)_
