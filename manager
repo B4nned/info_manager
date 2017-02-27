@@ -1,7 +1,7 @@
 #!/bin/bash
 #author: Leo / b4nned
 #date: 17/02/17 {dd/mm/yy}
-#version 1.0
+#version 1.1
 #See the file 'LICENSE', or visit www.gnu.org/licenses/gpl.txt
 
 Change_Color () {
@@ -42,23 +42,20 @@ Change_Color () {
 	fi
 }
 
-echo -e "\n\n\n"
 
 Show_info () {
-	#a=$(cat /sys/devices/system/cpu/cpu0/cpufreq/cpuinfo_cur_freq)
-	#b=$(bc -l <<< "$a / 1000")
-	#echo ${b%00000000000000000}
-	Reset
+
 	vet_core=()
 	vet_temp=()
 	vet_htemp=()
 	vet_etemp=()
+	cpu_mhz=() 
+	model_name=$(cat /proc/cpuinfo | grep "model name" | head -n 1 | cut -b 14-)
 
-	cores=$(sensors | grep Core | cut -b 6)
-	temps=$(sensors | grep Core | cut -b 18-19)
-	htemps=$(sensors | grep Core | cut -b 35-36)
-	etemps=$(sensors | grep Core | cut -b 53-55)
-
+	cores=$(sensors coretemp-isa-0000 -A  | grep Core | cut -b 6)
+	temps=$(sensors coretemp-isa-0000 -A  | grep Core | cut -b 18-19)
+	htemps=$(sensors coretemp-isa-0000 -A | grep Core | cut -b 35-36)
+	etemps=$(sensors coretemp-isa-0000 -A | grep Core | cut -b 51-53)
 	for i in $cores; do 
 		vet_core+=($i);
 	done
@@ -76,16 +73,48 @@ Show_info () {
 	done
 
 	vetorlen=${#vet_core[*]}
+	Reset 0 6
 	vetorlen=$[($vetorlen-1)]
+
+	for i in $( seq 0 $vetorlen); do 
+		x1=$(cat /sys/devices/system/cpu/cpu$i/cpufreq/cpuinfo_cur_freq)
+		x2=$(echo "$x1" | cut -b 1)
+		x3=$(printf "$x2.";echo "$x1" | cut -b 2-3)
+
+		#x2=$(bc -l <<< "$x1 / 1000")		
+		#x3=${x2%00000000000000000}
+
+		cpu_mhz+=($x3)
+	done
+
+	# OUTPUTs FUNCTION {
+
+	m1="\e[97;1m$model_name\e[0m"
+	echo -e "$m1"
 	for i in $( seq 0 $vetorlen); do
 		Change_Color ${vet_temp[$i]} ${vet_htemp[$i]} 
 		#Change_Color 25 ${vet_htemp[$i]} 
-		echo -e "\e[0m""\e[1mCore \e[94m$i\e[0;1m:   $color${vet_temp[$i]}°C"
+		m1="\e[97;1m$model_name\e[0m"
+		s1="\e[0m""\e[1mCore \e[94m$i\e[0;1m:"
+		s2="$color${vet_temp[$i]}°C\e[0m"
+		s3="\e[36;1m${cpu_mhz[$i]} GHz\e[0m"
+		echo -e "$s1" "" "$s2" "" "$s3"
 	done
+
+	# }
+
 }
 
 Reset () {
-	echo -e "\e[0m\033[5A"
+	if [ $1 == "0" ]; then
+		echo -e "\e[0m\033[$2A"
+	fi
+
+	if [ $1 == "1" ]; then
+		for i in $(seq 0 $2); do
+			echo ""
+		done
+	fi
 }
 
 Start_mode () {
@@ -99,6 +128,8 @@ Start_mode () {
 	fi
 }
 
+#echo -e "\n\n\n\n"
+Reset 1 4
 p_list=()
 
 if [ $# == "0" ]; then
@@ -108,6 +139,3 @@ else
 		p_list+=($i)
 	done
 fi
-
-
-
