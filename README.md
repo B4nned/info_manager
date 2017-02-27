@@ -1,7 +1,8 @@
 # info_manager
-Show dinamic hardware information.
+Show dinamic cpu information.
 
-Version 1.0 (Options)
-- No parameters/arguments
-- Show Core's temperature with a colors(Red hot | Blue cold)
-- Dependescies: lm_sensors
+Version 1.1 (no parameters)
+- Show Cores Temperature with colros
+- Show Processors GHz
+- Show CPU Name
+
