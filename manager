@@ -2,7 +2,7 @@
 #author: Leo / b4nned
 #date: 17/02/17 {dd/mm/yy}
 #version 1.1
-#See the file 'LICENSE', or visit www.gnu.org/licenses/gpl.txt
+#LICENSE: GNU GENERAL PUBLIC LICENSE
 
 Change_Color () {
 	color="\e[0m"
