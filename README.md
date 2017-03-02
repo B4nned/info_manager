@@ -1,5 +1,5 @@
 # info_manager
-**LICENSE: GNU GENERAL PUBLIC LICENSE**
+LICENSE: **GNU GENERAL PUBLIC LICENSE**
 
 Show dinamic cpu information.
 
