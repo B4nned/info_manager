@@ -8,3 +8,6 @@ Version 1.1 (no parameters)
 - Show Processors GHz
 - Show CPU Name
 
+Usage:
+> ./manager
+
